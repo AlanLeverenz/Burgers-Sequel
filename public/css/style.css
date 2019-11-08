@@ -1,0 +1,49 @@
+body {
+    background-color: #fcf997;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   }
+
+.toppings {
+    margin-bottom: 20px;
+}
+
+.to-eat {
+    background-color: rgb(249, 171, 102);
+    font-weight: 900;
+    padding: 12px;
+    clear: left;
+}
+
+.toppings {
+    background-color: white;
+    padding: 6px;
+}
+
+/* .eat-it {
+    float: left;
+    position: relative;
+    top: -20px;
+} */
+
+.add-burger {
+    padding-top: 20px;
+}
+
+.spacer {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/* not affecting index.handlebars */
+
+.enter_section {
+    background-image: linear-gradient(bottom, yellow, brown);
+}
+
+#enter-name {
+    height: 50px;
+}
+
+#enter-topping {
+    height: 80px;
+}
