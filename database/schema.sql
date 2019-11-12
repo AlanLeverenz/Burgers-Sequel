@@ -1,10 +1,14 @@
-DROP DATABASE IF EXISTS burgers_db;
-CREATE DATABASE burgers_db;
+DROP DATABASE IF EXISTS BurgerSequel;
+CREATE DATABASE BurgerSequel;
 
-USE burgers_db;
-CREATE TABLE burgers(
+USE BurgerSequel;
+CREATE TABLE Burgers(
 	id integer auto_increment primary key,
-    burger_name varchar(80) not null,
-    burger_toppings varchar(255),
+    name varchar(80) not null,
+    toppings varchar(255),
     devoured BOOLEAN not null DEFAULT false
 );
+CREATE TABLE Customers(
+    id integer auto_increment primary key,
+    name varchar(80) not null 
+)

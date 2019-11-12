@@ -6,8 +6,8 @@ $(".create-form").on("submit", function(event) {
     console.log($("#enter-name").val());
 
     var newBurger = {
-      burger_name: $("#enter-name").val().trim(),
-      burger_topping: $("#enter-topping").val().trim()
+      name: $("#enter-name").val().trim(),
+      topping: $("#enter-topping").val().trim()
     };
 
     // Send the POST request.

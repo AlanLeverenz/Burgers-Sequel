@@ -13,10 +13,10 @@
             {{#each burger_data}}
             {{#unless this.devoured}}
                 <div class="text-center to-eat">
-                    {{this.id}}. {{this.burger_name}}
+                    {{this.id}}. {{this.name}}
                 </div>
                 <div class="text-center toppings"> 
-                    {{this.burger_toppings}}
+                    {{this.toppings}}
                 </div>
             {{/unless}}
             {{/each}}
@@ -26,11 +26,10 @@
             {{#each burger_data}}
             {{#unless this.devoured}}
             <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-                <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+                <input type="hidden" name="id" type="text" value={{this.id}}>
                 <br>
-                <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR {{this.burger_name}}! </button>
+                <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR {{this.name}}! </button>
             </form>
-            {{!-- </div> --}}
             {{/unless}}
             {{/each}}
         </div>
