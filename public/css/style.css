@@ -14,6 +14,14 @@ body {
     clear: left;
 }
 
+.customer {
+    background-color: rgb(250, 197, 151);
+    font-weight: 900;
+    padding: 12px;
+    clear: left;
+    margin-top: 12px;
+}
+
 .toppings {
     background-color: white;
     padding: 6px;

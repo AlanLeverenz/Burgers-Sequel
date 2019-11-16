@@ -8,6 +8,8 @@
 </div>
 
 <div class="container">
+
+    {{!-- burger list --}}
     <div class="row">
         <div class="col-6 text-center" id="menu">
             {{#each burger_data}}
@@ -22,6 +24,7 @@
             {{/each}}
         </div> 
 
+    {{!-- burger devour update form ----------------------------}}
         <div class="col text-center eat-it">
             {{#each burger_data}}
             {{#unless this.devoured}}
@@ -29,38 +32,71 @@
                 <input type="hidden" name="id" type="text" value={{this.id}}>
                 <br>
                 <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR {{this.name}}! </button>
+                {{!-- <select>
+                    {{#each customer_data}}
+                    <option customer-id="{{this.id}}">{{this.name}}</option>
+                    {{/each}}
+                </select> --}}
             </form>
             {{/unless}}
             {{/each}}
         </div>
 
-        <div class="col-4 text-center" class="eaten">
+    {{!-- customer list ---------------------------------------}}
+        <div class="col text-center" id="customer-list">
+            {{#each customer_data}}
+                <div class="text-center customer">
+                    {{this.name}}
+                </div>
+                {{!-- INSERT DEVOURED BURGER LIST BELONGING TO THE CUSTOMER --}}
+                {{!-- {{#each eaten_data}}
+                    <div class="eaten-burgers">
+                        {{this.name}}
+                    </div>
+                {{/each}}     --}}
+                {{!-- </div> --}}
+            {{/each}}
+        </div> 
+
+{{!-- ORM CODING --}}
+        {{!-- devoured burgers --}}
+        {{!-- <div class="col-4 text-center" class="eaten">
             {{#each burger_data}}
                 {{#if this.devoured}}
                     <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
                 {{/if}}
             {{/each}}
-        </div>
+        </div> --}}
+
     </div>
 </div>
 
+<hr>
+
+{{!-- make a burger form --}}
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-around">
         <div class="col-xs-6 text-center enter_section">
             <form action="/burgers/create" method="POST" class="create-form">
-            {{!-- <form class="create-form"> --}}
 
-                {{!-- <input type="textarea" name="burger_name" placeholder="burger" class="form-control" id="enter_name"> --}}
+                <input type="textarea" name="name" placeholder="burger" class="form-control" value="" id="enter_burger" style="height:50px">
 
-                <input type="textarea" name="burger_name" placeholder="burger" class="form-control" value="" id="enter_name" style="height:50px">
+                <input type="textarea" name="toppings" placeholder="toppings" class="form-control" value="" id="enter_topping" style="height:80px">
 
-                {{!-- <input type="textarea" name="burger_toppings" placeholder="toppings" class="form-control" id="enter_topping"> --}}
-
-                <input type="textarea" name="burger_toppings" placeholder="toppings" class="form-control" value="" id="enter_topping" style="height:80px">
-
-                <button type="submit" class="btn btn-primary spacer" id="text-enter-button">SUBMIT</button>
+                <button type="submit" class="btn btn-primary spacer" id="burger-enter-button">SUBMIT</button>
             </form>
             <p>Enter a burger and its toppings you would like to eat.</p>
+        </div>
+        
+{{!-- add a customer form --}}
+        <div class="col-xs-6 text-center enter_section">
+            <form action="/customers/create" method="POST" class="create-form">
+
+                <input type="textarea" name="name" placeholder="customer" class="form-control" value="" id="enter_customer" style="height:50px">
+
+                <button type="submit" class="btn btn-primary spacer" id="customer-enter-button">SUBMIT</button>
+            </form>
+            <p>Add a customer who wants a burger.</p>
         </div>
     </div>
 </div>

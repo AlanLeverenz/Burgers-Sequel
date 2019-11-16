@@ -3,11 +3,11 @@ $(function() {
 $(".create-form").on("submit", function(event) {
     event.preventDefault();
 
-    console.log($("#enter-name").val());
+    console.log($("#enter-burger").val());
 
     var newBurger = {
-      name: $("#enter-name").val().trim(),
-      topping: $("#enter-topping").val().trim()
+      name: $("#enter_burger").val().trim(),
+      toppings: $("#enter_topping").val().trim()
     };
 
     // Send the POST request.
