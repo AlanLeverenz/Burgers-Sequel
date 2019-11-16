@@ -3,15 +3,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
 
-.toppings {
-    margin-bottom: 20px;
-}
-
 .to-eat {
     background-color: rgb(249, 171, 102);
     font-weight: 900;
     padding: 12px;
     clear: left;
+    margin-top: 12px;
 }
 
 .customer {
@@ -27,11 +24,10 @@ body {
     padding: 6px;
 }
 
-/* .eat-it {
-    float: left;
-    position: relative;
-    top: -20px;
-} */
+.eat-it {
+    background-color: rgb(139, 252, 143);
+    margin-top: 12px;
+}
 
 .add-burger {
     padding-top: 20px;

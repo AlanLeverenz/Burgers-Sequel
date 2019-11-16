@@ -9,7 +9,7 @@
 
 <div class="container">
 
-    {{!-- burger list --}}
+    {{!-- burger list ------------------------------------------}}
     <div class="row">
         <div class="col-6 text-center" id="menu">
             {{#each burger_data}}
@@ -28,15 +28,21 @@
         <div class="col text-center eat-it">
             {{#each burger_data}}
             {{#unless this.devoured}}
-            <form method="POST" action="/burgers/update?_method=PUT" class="button-size">
+            <form method="POST" action="/burgers/update/{{this.id}}" class="button-size">
                 <input type="hidden" name="id" type="text" value={{this.id}}>
                 <br>
-                <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR {{this.name}}! </button>
-                {{!-- <select>
+                <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR <span style="color:blue">{{this.name}}!</span> </button>
+
+{{!-- click on a customer name to select its id. --}}
+{{!-- both the burger id and the customer id form a request for a query --}}
+{{!-- the response returns the result, which is inserted below the customer name in the customer list div --}}
+
+                <select>
                     {{#each customer_data}}
-                    <option customer-id="{{this.id}}">{{this.name}}</option>
+                        <option customer-id="{{this.id}}">{{this.name}}</option>
                     {{/each}}
-                </select> --}}
+                </select>
+
             </form>
             {{/unless}}
             {{/each}}
@@ -49,24 +55,18 @@
                     {{this.name}}
                 </div>
                 {{!-- INSERT DEVOURED BURGER LIST BELONGING TO THE CUSTOMER --}}
-                {{!-- {{#each eaten_data}}
-                    <div class="eaten-burgers">
-                        {{this.name}}
-                    </div>
-                {{/each}}     --}}
-                {{!-- </div> --}}
             {{/each}}
         </div> 
 
 {{!-- ORM CODING --}}
         {{!-- devoured burgers --}}
-        {{!-- <div class="col-4 text-center" class="eaten">
+        <div class="eaten">
             {{#each burger_data}}
                 {{#if this.devoured}}
                     <input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
                 {{/if}}
             {{/each}}
-        </div> --}}
+        </div>
 
     </div>
 </div>

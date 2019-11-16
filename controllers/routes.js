@@ -39,6 +39,12 @@ module.exports = function(app) {
 // gather the selected customer id
 // append the burger name to the customer div
 
+  app.get('/burgers/update/:id',function(req,res){
+      db.update(req.params.id, function(result){
+          console.log(result);
+          res.redirect('/');
+      });
+  });
 
 } // end module exports code section
 
