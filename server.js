@@ -50,6 +50,3 @@ db.sequelize.sync(syncOptions).then(function() {
 require('./controllers/routes.js')(app);
 
 module.exports = app;
-
-
-

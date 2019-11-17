@@ -3,7 +3,12 @@ var db = require("../models");
 module.exports = function(app) {
 
     app.get('/', function(req,res){
-        db.Customer.findAll({}).then(function(customer_data) {
+        db.Customer.findAll(
+          {
+          //   include: [{
+          // model:db.Burger}]
+        }
+          ).then(function(customer_data) {
             console.log(customer_data);
             db.Burger.findAll({}).then(function(burger_data) {
                 console.log(burger_data);
@@ -39,14 +44,22 @@ module.exports = function(app) {
 // gather the selected customer id
 // append the burger name to the customer div
 
-  app.get('/burgers/update/:id',function(req,res){
-      db.update(req.params.id, function(result){
-          console.log(result);
+  app.post('/burgers/update/:id',function(req,res){
+    console.log(req.body);
+    db.Burger.update({ 
+      CustomerId: req.body.CustomerId}, { 
+        where: {
+        id : parseInt(req.params.id) }
+      }
+    ).then(
+      data => { console.log(data);
           res.redirect('/');
-      });
-  });
+      })
+      .catch(e => console.log(e));
+  })
+} 
 
-} // end module exports code section
+// end module exports code section
 
 // FUTURE VERSION
 // 4 setup a burger menu with checkboxes, qty, and cost

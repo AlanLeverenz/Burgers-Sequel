@@ -4,12 +4,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
         }
     });
-    Customer.associate = function(models) {
-        Customer.hasMany(models.Burger, {
-            foreignKey: {
-                allowNull: true
-            }
-        })
-    }
+
+    // Customer.associate = function(models) {
+    //     Customer.hasMany(models.Burger, {
+    //         onDelete: "cascade"
+    //     });
+    // }
     return Customer;
 }

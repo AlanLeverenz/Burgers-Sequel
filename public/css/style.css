@@ -24,6 +24,11 @@ body {
     padding: 6px;
 }
 
+.devour {
+    color: blue;
+    font-weight: "500"
+}
+
 .eat-it {
     background-color: rgb(139, 252, 143);
     margin-top: 12px;
