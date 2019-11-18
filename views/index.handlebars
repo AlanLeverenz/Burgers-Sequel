@@ -33,10 +33,6 @@
                 <br>
                 <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR <span class="devour">{{this.name}}!</span> </button>
 
-{{!-- click on a customer name to select its id. --}}
-{{!-- both the burger id and the customer id form a request for a query --}}
-{{!-- the response returns the result, which is inserted below the customer name in the customer list div --}}
-
                 <select name="CustomerId">
                     <option> select customer </option>
                     {{#each ../customer_data}}
@@ -50,7 +46,7 @@
         </div>
 
     {{!-- customer list ---------------------------------------}}
-        <div class="col text-center" id="customer-list">
+        <div class="col-3 text-center" id="customer-list">
             {{#each customer_data}}
                 <div class="text-center customer">
                     {{this.name}}
@@ -59,14 +55,13 @@
                 {{!-- devoured burger list --}}
                 <div class="eaten">
                     {{#each ../burger_data}}
-                        {{!-- {{#if (this.CustomerId) }} --}}
-                        {{!-- {{#if (this.CustomerId == customer_data.id)) }} --}}
                         {{#if this.devoured}}
-                            <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
-                        {{/if}}
+                            {{!-- {{#equal this.CustomerId customer_data.id }} --}}
+                                <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
+                            {{!-- {{/equal}} --}}
+                        {{/if}}                      
                     {{/each}}
                 </div>
-
             {{/each}}
         </div> 
 
