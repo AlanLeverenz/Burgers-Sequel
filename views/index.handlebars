@@ -28,18 +28,20 @@
         <div class="col text-center eat-it">
             {{#each burger_data}}
             {{#unless this.devoured}}
-            <form method="POST" action="/burgers/update/:id" class="button-size">
-                <input type="hidden" name="id" type="text" value={{this.id}}>
-                <br>
-                <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR <span class="devour">{{this.name}}!</span> </button>
-
-                <select name="CustomerId">
-                    <option> select customer </option>
-                    {{#each ../customer_data}}
-                        <option value="{{this.id}}">{{this.name}}</option>
-                    {{/each}}
-                </select>
-
+            <form method="PUT" action="/burgers/update/:id" class="button-size">
+                <div class="form-group">
+                    <input type="hidden" name="id" type="text" value={{this.id}}>
+                    <br>
+                    <button type="submit" class="btn btn-light"><i class="fas fa-cookie-bite"></i> DEVOUR <span class="devour">{{this.name}}!</span> </button>
+                </div>
+                <div class="form-group">
+                    <select name="CustomerId">
+                        <option> select customer </option>
+                        {{#each ../customer_data}}
+                            <option value="{{this.id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
             </form>
             {{/unless}}
             {{/each}}
@@ -55,25 +57,13 @@
                 {{!-- devoured burger list --}}
                 <div class="eaten">
                     {{#each ../burger_data}}
-                        {{#if this.devoured}}
-                            {{!-- {{#equal this.CustomerId customer_data.id }} --}}
-                                <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
-                            {{!-- {{/equal}} --}}
-                        {{/if}}                      
+                        {{#equal ../this.id this.CustomerId}}
+                            <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
+                        {{/equal}}
                     {{/each}}
                 </div>
             {{/each}}
         </div> 
-
-{{!-- ORM CODING --}}
-        {{!-- devoured burgers --}}
-        {{!-- <div class="eaten">
-            {{#each ../burger_data}}
-                {{#if this.devoured}}
-                    <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
-                {{/if}}
-            {{/each}}
-        </div> --}}
     </div>
 </div>
 

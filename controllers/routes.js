@@ -4,7 +4,7 @@ module.exports = function(app) {
 
     app.get('/', function(req,res){
         db.Customer.findAll(
-          {
+          { 
           //   include: [{
           // model:db.Burger}]
         }
@@ -25,7 +25,7 @@ module.exports = function(app) {
   app.post("/burgers/create", function(req, res) {
     console.log(req.body)
     db.Burger.create(req.body).then(function(dbBurger) {
-      res.json(dbBurger);
+      // res.json(dbBurger);
       res.redirect('/');
     });
   });
@@ -35,7 +35,7 @@ module.exports = function(app) {
   app.post("/customers/create", function(req, res) {
     console.log(req.body)
     db.Customer.create(req.body).then(function(dbCustomer) {
-      res.json(dbCustomer);
+      // res.json(dbCustomer);
       res.redirect('/');
     });
   });
@@ -51,8 +51,10 @@ module.exports = function(app) {
         where: {
         id : parseInt(req.params.id) }
       }
-    ).then(
-      data => { console.log(data);
+      // ).then(
+      //   data => { console.log(data);
+    ).then(function(data) {
+      console.log(data);
           res.redirect('/');
       })
       .catch(e => console.log(e));
