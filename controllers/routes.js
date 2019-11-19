@@ -46,8 +46,11 @@ module.exports = function(app) {
 
   app.post('/burgers/update/:id',function(req,res){
     console.log(req.body);
-    db.Burger.update({ 
-      CustomerId: req.body.CustomerId}, { 
+    db.Burger.update(
+      { 
+      CustomerId: req.body.CustomerId, 
+      devoured: 1 },
+      { 
         where: {
         id : parseInt(req.params.id) }
       }

@@ -28,7 +28,7 @@
         <div class="col text-center eat-it">
             {{#each burger_data}}
             {{#unless this.devoured}}
-            <form method="PUT" action="/burgers/update/:id" class="button-size">
+            <form method="POST" action="/burgers/update/:id" class="button-size">
                 <div class="form-group">
                     <input type="hidden" name="id" type="text" value={{this.id}}>
                     <br>
