@@ -20,9 +20,11 @@ The forms to add burgers and customers are at the bottom of the page.
 
 The page automatically refreshes when a new burger or a customer is added, or a burger is devoured. 
 
-To devour a burger, select a customer from the dropdown menu and click on the DEVOUR button above it. When devoured, a burger is removed from the left and middle columns and inserted beneath the customer's name on the right column.
+To devour a burger, select a customer from the dropdown menu and click on the DEVOUR button above it. 
 
 ![Select a customer](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/select-customer.png)
+
+When devoured, a burger is removed from the left and middle columns and inserted beneath the customer's name on the right column.
 
 ![Ate the burger](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/devoured-burger.png)
 
