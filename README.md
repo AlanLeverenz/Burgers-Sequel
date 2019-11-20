@@ -2,26 +2,85 @@
 
 *A restructuring of the (ORM) Burgers repository code using Sequelize.*
 
+![Burgers-Sequel](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/index-page.png)
+
 ## What the app does
 
-This app lists a menu of burgers stored in a MySQL database. The user has the options of:
+This app displays a menu of burgers, a list of burgers to be devoured, and customers to eat them. The user has the option to:
 
-1. Add to the customer list,
+1. Add customers to the customer list
 2. Add new burgers to the menu, with toppings
-3. Devour burgers on the menu.
+3. Select a customer and devour a burger on the menu
 
-The page automatically refreshes when a new burger or customer is added.
+The forms to add burgers and customers are at the bottom of the page.
 
-The page also refreshes when a burger is devoured by a customer. When devoured the burger is removed from the middle column of edible burgers and inserted beneath the customer's name on the right column.
+![Add a customer](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/add-customer.png)
 
-This app is still under construction, pending some assistance in solving how to devour a burger and update the webpage with the change. This means:
+![Add a burger](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/add-salmon-burger.png)
 
-1. Solving how to fill the customer dropdown menu within the Devour button form.
-2. Acquiring both the burger Id and the selected customer Id (from the dropdown menu) when the DEVOUR button is clicked. 
-3. Route a request to the server to assign the customer's ID to the MySQL Burger table's (foreign key) Customer Id.
-4. The response function should remove the burger's Devour button in the middle column.
-5. The response function should insert the burger's name inside the Customer div on the right column.
+The page automatically refreshes when a new burger or a customer is added, or a burger is devoured. 
 
-![Add a burger](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/add-burger.png)
+To devour a burger, select a customer from the dropdown menu and click on the DEVOUR button above it. When devoured, a burger is removed from the left and middle columns and inserted beneath the customer's name on the right column.
 
-__To be completed...__
+![Select a customer](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/select-customer.png)
+
+![Ate the burger](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/public/images/devoured-burger.png)
+
+### Technology
+
+The __dependencies__ for this nodejs app are:
+
+* body-parser
+* dotenv
+* express
+* express-handlebars
+* fs
+* method-override
+* mysql2
+* path
+* sequelize
+
+The __database__ is MySQL, which stores two tables, Burgers and Customers, which are defined in two Model files. Burgers has a *belongsTo* association with the Customers table with a CustomerId foreign key.
+
+A __Handlebars Helper__ called *equal* was created in order to list burgers devoured by each customer when *index.Handlebars* is rendered. Here is the helper code added to the *server.js* file.
+
+````
+var hbs = exphbs.create({
+  helpers: {
+    equal : function(a, b, opts) {
+      if (a == b) {
+          return opts.fn(this);
+      } else {
+          return opts.inverse(this);
+      }
+    }
+  },
+  defaultLayout: 'main',
+  partialsDir: ['views/partials/']
+});
+
+````
+Here is how the {{#equal}} object is used to properly render the devoured burgers in the customer list column:
+
+````
+<div class="col-3 text-center" id="customer-list">
+    {{#each customer_data}}
+        <div class="text-center customer">
+            {{this.name}}
+        </div>
+
+        {{!-- devoured burger list --}}
+        <div class="eaten">
+            {{#each ../burger_data}}
+                {{#equal ../this.id this.CustomerId}}
+                    <input class="form-control" type="text" placeholder="{{this.id}}. {{this.name}}" readonly>
+                {{/equal}}
+            {{/each}}
+        </div>
+    {{/each}}
+</div> 
+````
+
+### Author
+
+Alan Leverenz (awleverenz@gmail.com)
