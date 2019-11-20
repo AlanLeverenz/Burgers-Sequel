@@ -1,5 +1,6 @@
 $(function() {
 
+// add new burger (done in handlebars route.js) -----
 $(".create-form").on("submit", function(event) {
     event.preventDefault();
 
@@ -17,9 +18,9 @@ $(".create-form").on("submit", function(event) {
     }).then(
       function() {
         console.log("created new burger");
-        // Reload the page to get the updated list
         location.reload();
       }
     );
   });
 });
+

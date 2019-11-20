@@ -22,4 +22,6 @@ This app is still under construction, pending some assistance in solving how to 
 4. The response function should remove the burger's Devour button in the middle column.
 5. The response function should insert the burger's name inside the Customer div on the right column.
 
+![Add a burger](https://github.com/AlanLeverenz/Burgers-Sequel/blob/master/images/add_burger.png)
+
 __To be completed...__

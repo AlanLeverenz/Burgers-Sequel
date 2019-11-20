@@ -1,94 +1,58 @@
 var db = require("../models");
 
+// redirect route loads all burgers and customers
 module.exports = function(app) {
 
     app.get('/', function(req,res){
-        db.Customer.findAll(
-          { 
-          //   include: [{
-          // model:db.Burger}]
-        }
-          ).then(function(customer_data) {
-            console.log(customer_data);
-            db.Burger.findAll({}).then(function(burger_data) {
-                console.log(burger_data);
-            res.render('index',{
-                customer_data, burger_data});
-            });
+      db.Customer.findAll({}).then(function(customer_data) {
+        console.log(customer_data);
+        db.Burger.findAll({}).then(function(burger_data) {
+          console.log(burger_data);
+          res.render('index',{
+            customer_data, burger_data});
         });
+      });
     });
 
-// UPDATE CURRENT VERSION
-
-// 1 post a new burger (button submit)
-
+  // add a burger
   app.post("/burgers/create", function(req, res) {
     console.log(req.body)
-    db.Burger.create(req.body).then(function(dbBurger) {
-      // res.json(dbBurger);
+    db.Burger.create(req.body).then(function() {
       res.redirect('/');
     });
   });
 
-// 2 add a new customer (button submit)
-
+  // add a customer
   app.post("/customers/create", function(req, res) {
     console.log(req.body)
-    db.Customer.create(req.body).then(function(dbCustomer) {
-      // res.json(dbCustomer);
+    db.Customer.create(req.body).then(function() {
       res.redirect('/');
     });
   });
 
-// 3 update burger devoured value when button clicked
-// gather the selected customer id
-// append the burger name to the customer div
+  // update a burger with CustomerId
+  app.post("/burgers/update", function(req, res) {
+  console.log(req.body);
+  
+  const condition = {
+    where : {
+    id : req.body.id
+    }
+  };
 
-  app.post('/burgers/update/:id',function(req,res){
-    console.log(req.body);
-    db.Burger.update(
-      { 
-      CustomerId: req.body.CustomerId, 
-      devoured: 1 },
-      { 
-        where: {
-        id : parseInt(req.params.id) }
+  db.Burger.update({
+    CustomerId : req.body.CustomerId,
+    devoured : 1
+  }, condition)
+  .then(function(result) {
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.redirect('/');
       }
-      // ).then(
-      //   data => { console.log(data);
-    ).then(function(data) {
-      console.log(data);
-          res.redirect('/');
-      })
-      .catch(e => console.log(e));
-  })
-} 
+    });
+  });
+}
 
-// end module exports code section
-
-// FUTURE VERSION
-// 4 setup a burger menu with checkboxes, qty, and cost
-
-// 5 store all purchases each customer makes
-// render purchases in a customer summary page (findAll, findOne)
-
-// 6 add customer sign-in / register to buy burgers
-// 7 add admin sign-in / register to makes burgers
-
-
-// ORM ROUTES CODE
-
-// app.get('/burgers/update',function(req,res){
-//     db.update(req.body.id, function(result){
-//         console.log(result);
-//         res.redirect('/');
-//     });
-// });
-
-// app.post('/burgers/create', function(req,res){
-//     db.create(req.body.name,req.body.toppings, function(result){
-//         res.redirect('/');
-//     });
-// });
 
 

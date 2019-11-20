@@ -1,10 +1,10 @@
 body {
-    background-color: #fcf997;
+    background-image: linear-gradient(rgb(252, 131, 2), rgb(255, 255, 73));
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    }
 
 .to-eat {
-    background-color: rgb(249, 171, 102);
+    background-color: rgb(102, 249, 107);
     font-weight: 900;
     padding: 12px;
     clear: left;
@@ -12,7 +12,7 @@ body {
 }
 
 .customer {
-    background-color: rgb(250, 197, 151);
+    background-color: rgb(151, 195, 250);
     font-weight: 900;
     padding: 12px;
     clear: left;
@@ -30,7 +30,7 @@ body {
 }
 
 .eat-it {
-    background-color: rgb(139, 252, 143);
+    background-color: rgb(179, 249, 182);
     margin-top: 12px;
 }
 
