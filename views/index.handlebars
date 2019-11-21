@@ -73,6 +73,7 @@
 <div class="container">
     <div class="row justify-content-around">
         <div class="col-xs-6 text-center enter_section">
+            <p>Enter a burger and its toppings you would like to eat.</p>
             <form action="/burgers/create" method="POST" class="create-form">
 
                 <input type="textarea" name="name" placeholder="burger" class="form-control" value="" id="enter_burger" style="height:50px">
@@ -81,18 +82,17 @@
 
                 <button type="submit" class="btn btn-primary spacer" id="burger-enter-button">SUBMIT</button>
             </form>
-            <p>Enter a burger and its toppings you would like to eat.</p>
         </div>
         
         {{!-- add a customer form --}}
         <div class="col-xs-6 text-center enter_section">
+            <p>Add a customer who wants a burger.</p>
             <form action="/customers/create" method="POST" class="create-form">
 
                 <input type="textarea" name="name" placeholder="customer" class="form-control" value="" id="enter_customer" style="height:50px">
 
                 <button type="submit" class="btn btn-primary spacer" id="customer-enter-button">SUBMIT</button>
             </form>
-            <p>Add a customer who wants a burger.</p>
         </div>
     </div>
 </div>

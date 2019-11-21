@@ -1,4 +1,5 @@
-USE BurgerSequel;
+USE k90nrkd40sazoloc;
+-- USE BurgerSequel;
 INSERT INTO Burgers (name, toppings, devoured, createdAt, updatedAt)
 VALUES ('THE BRGR','Two Beef Patties + brgr Sauce + Diced Onion + Lettuce + Tomato + Pickles',0,'2019-11-08 23:00:00','2019-11-08 23:00:00'),
 ('BEAUTIFUL DAY','Beef Patty + American Cheese + brgr Sauce + Grilled Onions + Lettuce + Tomato + Pickles',0,'2019-11-08 23:00:00','2019-11-08 23:00:00'),
